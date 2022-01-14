@@ -1,0 +1,3 @@
+"Problem","File","Severity","Line","Column","Rule","Description","URL","Category","Engine"
+"1","C:\Users\izabel.barranco_fiel\Desktop\Chatter Incentive Package\force-app\main\default\lwc\fieloNewLeaderboard\fieloNewLeaderboard.js","2","20","12","files-must-compile","Parsing error: Unexpected token ;",,"Scanner Internal","eslint"
+"2","C:\Users\izabel.barranco_fiel\Desktop\Chatter Incentive Package\force-app\main\default\lwc\newFieloDatatable\newFieloDatatable.js","2","8","5","files-must-compile","Parsing error: Unexpected character '@'",,"Scanner Internal","eslint"

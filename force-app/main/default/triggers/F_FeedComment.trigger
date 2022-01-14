@@ -1,0 +1,1 @@
+trigger F_FeedComment on FeedComment (after insert, after update) { new FieloFeedCommentHandler().handle(); }

@@ -1,0 +1,38 @@
+<template>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Member</th>
+                    <th>Points</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={membersLeaderboard} for:item="member">
+                    <tr key={member.Id} class={member.isActiveMember}>
+                        <td scope="row" class="mb-1">{member.Position__c}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src={member.avatarImg} class="circle-img circle-img--small mr-2" alt="User Img">
+                                <div class="user-info__basic">
+                                    <h5 class="mb-0">{member.Member__r.Name}</h5>
+                                </div>
+                            </div>
+                        </td>
+                        
+                        <td>
+                            <div class="d-flex align-items-baseline">
+                                <h4 class="mr-1">{member.Points__c}</h4>
+                            </div>
+                        </td>
+                        
+
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>

@@ -1,0 +1,32 @@
+<template>
+<div class="body">
+	<section class="main-content">
+		<div class="container">
+		
+			<h4>Leaderboard</h4>
+			<lightning-tabset class="f-leaderboard-wdgt__tabset">
+				<lightning-tab label={label.Monthly} title="monthly tab" value="Month" onactive={handleTabActive}>
+					<div class="f-leaderboard-wdgt__tab-monthly--wrapper">
+						<select class="tab-quarter--select_mnth select--filter" data-selecttype="month" onchange={handleChangeSelect}>
+							<template for:each={monthOptions} for:item="mthOption">
+								<option 
+									key={mthOption.Id} 
+									value={mthOption.Id}
+									label={mthOption.label}></option>
+							</template>
+						</select>
+						
+					</div>
+					<div class="datatable--container">
+						<c-new-fielo-datatable members-leaderboard={activeMembersLeaderboard}></c-new-fielo-datatable>
+						<template if:true={noMonthData}>
+                            <span class="datable--message">There were no activities recorded for this month</span>
+                        </template>
+					</div>
+				</lightning-tab>
+				</lightning-tabset>
+				
+		</div>
+	</section>
+</div>
+</template>
