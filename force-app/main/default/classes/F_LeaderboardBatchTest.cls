@@ -4,7 +4,7 @@ private class F_LeaderboardBatchTest {
     static void setup(){
         user sysAdmin = [select id, userroleid from user where profile.name = 'System Administrator' limit 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){
@@ -442,7 +442,7 @@ private class F_LeaderboardBatchTest {
     static void test(){
         user sysAdmin = [select id, userroleid from user where profile.name = 'System Administrator' limit 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){

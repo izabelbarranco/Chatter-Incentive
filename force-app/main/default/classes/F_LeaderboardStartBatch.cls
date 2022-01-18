@@ -49,60 +49,15 @@ global class F_LeaderboardStartBatch implements Database.Batchable<sObject>{
                         quarterPoints = lboard.Points__c;
                         
                         if(t.Chatter_Event__c != null){
-                            if(t.Chatter_Event__r.type__c == 'Answer a question'){
-                                lBoard.Number_Answers__c = lBoard.Number_Answers__c == null ? 1 : lBoard.Number_Answers__c + 1;
-                                tempQuarterLeaderboard.Number_Answers__c = lBoard.Number_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
+                            if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
 								lBoard.Number_Best_Answers__c = lBoard.Number_Best_Answers__c == null ? 1 : lBoard.Number_Best_Answers__c + 1;
                                 tempQuarterLeaderboard.Number_Best_Answers__c = lBoard.Number_Best_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a blog'){
-                                lBoard.Number_Blogs__c = lBoard.Number_Blogs__c == null ? 1 : lBoard.Number_Blogs__c + 1;
-                                tempQuarterLeaderboard.Number_Blogs__c = lBoard.Number_Blogs__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a comment'){
-                                lBoard.Number_Comments__c = lBoard.Number_Comments__c == null ? 1 : lBoard.Number_Comments__c + 1;
-                                tempQuarterLeaderboard.Number_Comments__c = lBoard.Number_Comments__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a comment'){
-                                lBoard.Number_Comments_Rece__c = lBoard.Number_Comments_Rece__c == null ? 1 : lBoard.Number_Comments_Rece__c + 1;
-                                tempQuarterLeaderboard.Number_Comments_Rece__c = lBoard.Number_Comments_Rece__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Followers__c = lBoard.Number_Followers__c == null ? 1 : lBoard.Number_Followers__c + 1;
-                                tempQuarterLeaderboard.Number_Followers__c= lBoard.Number_Followers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Submit an idea'){
-                                lBoard.Number_Ideas__c = lBoard.Number_Ideas__c == null ? 1 : lBoard.Number_Ideas__c + 1;
-                                tempQuarterLeaderboard.Number_Ideas__c = lBoard.Number_Ideas__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Like something'){
-                                lBoard.Number_Likes_given__c = lBoard.Number_Likes_given__c == null ? 1 : lBoard.Number_Likes_given__c + 1;
-                                tempQuarterLeaderboard.Number_Likes_given__c = lBoard.Number_Likes_given__c;
                             } else if(t.Chatter_Event__r.type__c == 'Receive a like'){
                                 lBoard.Number_Likes_received__c = lBoard.Number_Likes_received__c == null ? 1 : lBoard.Number_Likes_received__c + 1;
                                 tempQuarterLeaderboard.Number_Likes_received__c = lBoard.Number_Likes_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mark an answer as best'){
-                                lBoard.Number_Marking_Answers_as_best__c = lBoard.Number_Marking_Answers_as_best__c == null ? 1 : lBoard.Number_Marking_Answers_as_best__c + 1;
-                                tempQuarterLeaderboard.Number_Marking_Answers_as_best__c = lBoard.Number_Marking_Answers_as_best__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mention someone'){
-                                lBoard.Number_Mentions_given__c = lBoard.Number_Mentions_given__c == null ? 1 : lBoard.Number_Mentions_given__c + 1;
-                                tempQuarterLeaderboard.Number_Mentions_given__c = lBoard.Number_Mentions_given__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a mention'){
-                                lBoard.Number_Mentions_received__c = lBoard.Number_Mentions_received__c == null ? 1 : lBoard.Number_Mentions_received__c + 1;
-                                tempQuarterLeaderboard.Number_Mentions_received__c = lBoard.Number_Mentions_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Person_followed__c = lBoard.Number_Person_followed__c == null ? 1 : lBoard.Number_Person_followed__c + 1;
-                                tempQuarterLeaderboard.Number_Person_followed__c = lBoard.Number_Person_followed__c;
                             } else if(t.Chatter_Event__r.type__c == 'Write a post'){
                                 lBoard.Number_Posts__c = lBoard.Number_Posts__c == null ? 1 : lBoard.Number_Posts__c + 1;
                                 tempQuarterLeaderboard.Number_Posts__c = lBoard.Number_Posts__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Share a post'){
-                                lBoard.Number_Posts_Shared__c = lBoard.Number_Posts_Shared__c == null ? 1 : lBoard.Number_Posts_Shared__c + 1;
-                                tempQuarterLeaderboard.Number_Posts_Shared__c = lBoard.Number_Posts_Shared__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Ask a question'){
-                                lBoard.Number_Questions__c = lBoard.Number_Questions__c == null ? 1 : lBoard.Number_Questions__c + 1;
-                                tempQuarterLeaderboard.Number_Questions__c = lBoard.Number_Questions__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive an answer'){
-                                lBoard.Number_Questions_answered__c = lBoard.Number_Questions_answered__c == null ? 1 : lBoard.Number_Questions_answered__c + 1;
-                                tempQuarterLeaderboard.Number_Questions_answered__c = lBoard.Number_Questions_answered__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a topic'){
-                                lBoard.Number_Topics_Followed__c = lBoard.Number_Topics_Followed__c == null ? 1 : lBoard.Number_Topics_Followed__c + 1;
-                                tempQuarterLeaderboard.Number_Topics_Followed__c = lBoard.Number_Topics_Followed__c;
                             }
                         }
                         
@@ -120,60 +75,15 @@ global class F_LeaderboardStartBatch implements Database.Batchable<sObject>{
                         lBoard.Member__c = t.FieloPLT__Member__c;
                         quarterPoints = lboard.Points__c;
                         if(t.Chatter_Event__c != null){
-                            if(t.Chatter_Event__r.type__c == 'Answer a question'){
-                                lBoard.Number_Answers__c = 1;
-                                tempQuarterLeaderboard.Number_Answers__c = lBoard.Number_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
+                            if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
                                 lBoard.Number_Best_Answers__c = 1;
                                 tempQuarterLeaderboard.Number_Best_Answers__c = lBoard.Number_Best_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a blog'){
-                                lBoard.Number_Blogs__c = 1;
-                                tempQuarterLeaderboard.Number_Blogs__c = lBoard.Number_Blogs__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a comment'){
-                                lBoard.Number_Comments__c = 1;
-                                tempQuarterLeaderboard.Number_Comments__c = lBoard.Number_Comments__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a comment'){
-                                lBoard.Number_Comments_Rece__c = 1; 
-                                tempQuarterLeaderboard.Number_Comments_Rece__c = lBoard.Number_Comments_Rece__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Followers__c = 1;
-                                tempQuarterLeaderboard.Number_Followers__c= lBoard.Number_Followers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Submit an idea'){
-                                lBoard.Number_Ideas__c = 1;
-                                tempQuarterLeaderboard.Number_Ideas__c = lBoard.Number_Ideas__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Like something'){
-                                lBoard.Number_Likes_given__c = 1;
-                                tempQuarterLeaderboard.Number_Likes_given__c = lBoard.Number_Likes_given__c;
                             } else if(t.Chatter_Event__r.type__c == 'Receive a like'){
                                 lBoard.Number_Likes_received__c = 1;
                                 tempQuarterLeaderboard.Number_Likes_received__c = lBoard.Number_Likes_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mark an answer as best'){
-                                lBoard.Number_Marking_Answers_as_best__c = 1;
-                                tempQuarterLeaderboard.Number_Marking_Answers_as_best__c = lBoard.Number_Marking_Answers_as_best__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mention someone'){
-                                lBoard.Number_Mentions_given__c = 1;
-                                tempQuarterLeaderboard.Number_Mentions_given__c = lBoard.Number_Mentions_given__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a mention'){
-                                lBoard.Number_Mentions_received__c = 1;
-                                tempQuarterLeaderboard.Number_Mentions_received__c = lBoard.Number_Mentions_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Person_followed__c = 1;
-                                tempQuarterLeaderboard.Number_Person_followed__c = lBoard.Number_Person_followed__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a post'){
+                            }else if(t.Chatter_Event__r.type__c == 'Write a post'){
                                 lBoard.Number_Posts__c = 1;
                                 tempQuarterLeaderboard.Number_Posts__c = lBoard.Number_Posts__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Share a post'){
-                                lBoard.Number_Posts_Shared__c = 1;
-                                tempQuarterLeaderboard.Number_Posts_Shared__c = lBoard.Number_Posts_Shared__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Ask a question'){
-                                lBoard.Number_Questions__c = 1;
-                                tempQuarterLeaderboard.Number_Questions__c = lBoard.Number_Questions__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive an answer'){
-                                lBoard.Number_Questions_answered__c = 1;
-                                tempQuarterLeaderboard.Number_Questions_answered__c = lBoard.Number_Questions_answered__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a topic'){
-                                lBoard.Number_Topics_Followed__c = 1;
-                                tempQuarterLeaderboard.Number_Topics_Followed__c = lBoard.Number_Topics_Followed__c;
                             }
                         }
                         lBoardInsert.add(lboard);
@@ -191,42 +101,12 @@ global class F_LeaderboardStartBatch implements Database.Batchable<sObject>{
                         F_Leaderboard__c lBoard = lBoardMap.get(t.FieloPLT__Member__c + '' + p.Type + '' + p.StartDate);
                         lboard.Points__c = quarterPoints;
                         if(t.Chatter_Event__c != null){
-                            if(t.Chatter_Event__r.type__c == 'Answer a question'){
-                                lBoard.Number_Answers__c = tempQuarterLeaderboard.Number_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
+                            if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
                                 lBoard.Number_Best_Answers__c = tempQuarterLeaderboard.Number_Best_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a blog'){
-                                lBoard.Number_Blogs__c = tempQuarterLeaderboard.Number_Blogs__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a comment'){
-                                lBoard.Number_Comments__c = tempQuarterLeaderboard.Number_Comments__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a comment'){
-                                lBoard.Number_Comments_Rece__c = tempQuarterLeaderboard.Number_Comments_Rece__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Followers__c = tempQuarterLeaderboard.Number_Followers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Submit an idea'){
-                                lBoard.Number_Ideas__c = tempQuarterLeaderboard.Number_Ideas__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Like something'){
-                                lBoard.Number_Likes_given__c = tempQuarterLeaderboard.Number_Likes_given__c;
                             } else if(t.Chatter_Event__r.type__c == 'Receive a like'){
                                 lBoard.Number_Likes_received__c = tempQuarterLeaderboard.Number_Likes_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mark an answer as best'){
-                                lBoard.Number_Marking_Answers_as_best__c = tempQuarterLeaderboard.Number_Marking_Answers_as_best__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mention someone'){
-                                lBoard.Number_Mentions_given__c = tempQuarterLeaderboard.Number_Mentions_given__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a mention'){
-                                lBoard.Number_Mentions_received__c = tempQuarterLeaderboard.Number_Mentions_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Person_followed__c = tempQuarterLeaderboard.Number_Person_followed__c;
                             } else if(t.Chatter_Event__r.type__c == 'Write a post'){
                                 lBoard.Number_Posts__c = tempQuarterLeaderboard.Number_Posts__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Share a post'){
-                                lBoard.Number_Posts_Shared__c = tempQuarterLeaderboard.Number_Posts_Shared__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Ask a question'){
-                                lBoard.Number_Questions__c = tempQuarterLeaderboard.Number_Questions__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive an answer'){
-                                lBoard.Number_Questions_answered__c = tempQuarterLeaderboard.Number_Questions_answered__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a topic'){
-                                lBoard.Number_Topics_Followed__c = tempQuarterLeaderboard.Number_Topics_Followed__c;
                             }
                         }
                         lBoardUpdate.add(lboard);
@@ -242,42 +122,12 @@ global class F_LeaderboardStartBatch implements Database.Batchable<sObject>{
                         lBoard.F_ChatterGroupId__c = t.FieloPLT__Member__r.Group_ID__c;
                         lBoard.Member__c = t.FieloPLT__Member__c;
                         if(t.Chatter_Event__c != null){
-                            if(t.Chatter_Event__r.type__c == 'Answer a question'){
-                                lBoard.Number_Answers__c = tempQuarterLeaderboard.Number_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
+                            if(t.Chatter_Event__r.type__c == 'Your answer is marked as best'){
                                 lBoard.Number_Best_Answers__c = tempQuarterLeaderboard.Number_Best_Answers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a blog'){
-                                lBoard.Number_Blogs__c = tempQuarterLeaderboard.Number_Blogs__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Write a comment'){
-                                lBoard.Number_Comments__c = tempQuarterLeaderboard.Number_Comments__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a comment'){
-                                lBoard.Number_Comments_Rece__c = tempQuarterLeaderboard.Number_Comments_Rece__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Followers__c = tempQuarterLeaderboard.Number_Followers__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Submit an idea'){
-                                lBoard.Number_Ideas__c = tempQuarterLeaderboard.Number_Ideas__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Like something'){
-                                lBoard.Number_Likes_given__c = tempQuarterLeaderboard.Number_Likes_given__c;
                             } else if(t.Chatter_Event__r.type__c == 'Receive a like'){
                                 lBoard.Number_Likes_received__c = tempQuarterLeaderboard.Number_Likes_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mark an answer as best'){
-                                lBoard.Number_Marking_Answers_as_best__c = tempQuarterLeaderboard.Number_Marking_Answers_as_best__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Mention someone'){
-                                lBoard.Number_Mentions_given__c = tempQuarterLeaderboard.Number_Mentions_given__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive a mention'){
-                                lBoard.Number_Mentions_received__c = tempQuarterLeaderboard.Number_Mentions_received__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a person'){
-                                lBoard.Number_Person_followed__c = tempQuarterLeaderboard.Number_Person_followed__c;
                             } else if(t.Chatter_Event__r.type__c == 'Write a post'){
                                 lBoard.Number_Posts__c = tempQuarterLeaderboard.Number_Posts__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Share a post'){
-                                lBoard.Number_Posts_Shared__c = tempQuarterLeaderboard.Number_Posts_Shared__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Ask a question'){
-                                lBoard.Number_Questions__c = tempQuarterLeaderboard.Number_Questions__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Receive an answer'){
-                                lBoard.Number_Questions_answered__c = tempQuarterLeaderboard.Number_Questions_answered__c;
-                            } else if(t.Chatter_Event__r.type__c == 'Follow a topic'){
-                                lBoard.Number_Topics_Followed__c = tempQuarterLeaderboard.Number_Topics_Followed__c;
                             }
                         }
                         lBoardInsert.add(lboard);

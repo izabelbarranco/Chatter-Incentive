@@ -4,12 +4,10 @@ private class F_PurgeBatchSchedulerTest {
     static void setup(){
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
-        update adminUser;
+        //adminUser.userRoleId = testRole.id;
+        //update adminUser;
         
-        permissionset ps = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
-        insert new PermissionSetAssignment(AssigneeId = adminUser.id, PermissionSetId = ps.Id);
-
+        
         system.runAs(adminUser){
             Account portalAccount = new Account();
             portalAccount.Name = 'TestAccount';
@@ -56,7 +54,7 @@ private class F_PurgeBatchSchedulerTest {
             FieloPLT__Point__c pt = F_SObjectForTest.getPoint(member.Id, rule.Id, transac.Id);
             insert pt;
             
-     		Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupId, 'Ask a question', 'Test');
+     		Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupId, 'Write a post', 'Test');
 			insert event;            
          
         }

@@ -7,7 +7,7 @@ public class F_FollowBatchTest {
         sysAdmin.CX_Role__c = 'Other';
         update sysAdmin;
 
-		permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+		permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){
@@ -17,7 +17,7 @@ public class F_FollowBatchTest {
         sysAdmin.userroleid = testRole.Id;
         update sysAdmin;
         system.runAs(sysAdmin){
-             List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='FieloOrgCisco'];
+             List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='Test Chatter'];
 			Id networkId = testnetworkList[0].Id;
             profile testProfile = [select id from profile where name = 'system administrator'];
             Account a = new Account(Name='Test Account Name');
@@ -42,10 +42,7 @@ public class F_FollowBatchTest {
             insert program;
         	system.debug(testContact);
             system.debug(testcontact2);
-            FieloPLT__Triggers__c trig = new FieloPLT__Triggers__c();
-            trig.SetupOwnerId = userInfo.getUserId();
-            trig.FieloPLT__Member__c = false;
-            insert trig;
+            
             FieloPLT__Member__c member = F_SObjectForTest.getMember('Test Member', program.Id, sysAdmin.id, testContact.Id);
             member.Group_ID__c = 'test';
         	member.Group_Name__c = 'test';
@@ -101,7 +98,7 @@ public class F_FollowBatchTest {
                 
             }
             
-            Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupIds[0], 'Follow a topic', 'Test', userInfo.getUserId());
+            Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupIds[0], 'Write a post', 'Test', userInfo.getUserId());
             system.debug('event: ' + event);
             
             List<Chatter_Event__c> eventlist = new List<Chatter_Event__c>();
@@ -118,7 +115,7 @@ public class F_FollowBatchTest {
 		sysAdmin.userroleid = testRole.Id;
         update sysAdmin;
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){
@@ -132,7 +129,7 @@ public class F_FollowBatchTest {
         system.runAs(sysAdmin){
             FieloPLT__Member__c member = [select id from FieloPLT__Member__c limit 1];
             String groupId = [SELECT Id FROM CollaborationGroup WHERE Name = 'Other' LIMIT 1].Id;
-            Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupId, 'Follow a topic', 'Test', userInfo.getUserId());
+            Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupId, 'Write a post', 'Test', userInfo.getUserId());
             system.debug('event: ' + event);
             String CRON_EXP = '0 0 23 * * ?';
             F_FollowBatch b0 = new F_FollowBatch();

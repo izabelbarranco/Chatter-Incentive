@@ -4,12 +4,8 @@ private class FieloSObjectFactoryTest {
     static void setup(){
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
-        update adminUser;
-        
-        permissionset ps = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
-        insert new PermissionSetAssignment(AssigneeId = adminUser.id, PermissionSetId = ps.Id);
-
+        //adminUser.userRoleId = testRole.id;
+        //update adminUser;
         
         
         system.runAs(adminUser){
@@ -45,16 +41,9 @@ private class FieloSObjectFactoryTest {
         
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
-        update adminUser;
+        //adminUser.userRoleId = testRole.id;
+        //update adminUser;
         
-        permissionset ps = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
-        
-        List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :adminUser.Id 
-                                             AND PermissionSetId = :ps.Id];
-        if(psa.size() == 0){
-        	insert new PermissionSetAssignment(AssigneeId = adminUser.id, PermissionSetId = ps.Id); 
-        } 
         
         system.runAs(adminUser){
             FieloPLT__Member__c member = [select id from FieloPLT__Member__c];
@@ -70,15 +59,9 @@ private class FieloSObjectFactoryTest {
     static void createEventTest2(){
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
-        update adminUser;
-        
-        permissionset ps = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
-        List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :adminUser.Id 
-                                             AND PermissionSetId = :ps.Id];
-        if(psa.size() == 0){
-        	insert new PermissionSetAssignment(AssigneeId = adminUser.id, PermissionSetId = ps.Id); 
-        }
+        //adminUser.userRoleId = testRole.id;
+        //update adminUser;
+
 
         
         system.runAs(adminUser){
@@ -95,8 +78,8 @@ private class FieloSObjectFactoryTest {
     static void createGeneralMemberTest(){
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
-        update adminUser;
+        //adminUser.userRoleId = testRole.id;
+        //update adminUser;
         
         
         system.runAs(adminUser){

@@ -4,7 +4,7 @@ private class FieloFeedCommentHandlerTest {
     @isTest(seeAllData=true)
     static void testOnAfterInsert(){
         FieloPLT.CacheAPI.enableCacheAccess(false);
-        List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='FieloOrgCisco'];
+        List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='Test Chatter'];
         Id networkId = testnetworkList[0].Id;
         
         Profile prof = F_SObjectForTest.getProfile('system administrator');
@@ -49,7 +49,7 @@ private class FieloFeedCommentHandlerTest {
             // Use a record ID for the subject ID.
             feedItemInput.subjectId = getCommunityUserId();
             
-            ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'FieloOrgCisco' limit 1][0].NetworkId, feedItemInput);
+            ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'Test Chatter' limit 1][0].NetworkId, feedItemInput);
             
             String feedElementId = feedElement.id;
             
@@ -68,7 +68,7 @@ private class FieloFeedCommentHandlerTest {
             
             commentInput.body = messageBodyInput;
             
-            ConnectApi.Comment commentRep = ConnectApi.ChatterFeeds.postCommentToFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'FieloOrgCisco' limit 1][0].NetworkId, feedElementId, commentInput, null);
+            ConnectApi.Comment commentRep = ConnectApi.ChatterFeeds.postCommentToFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'Test Chatter' limit 1][0].NetworkId, feedElementId, commentInput, null);
             
             
             Test.stopTest();
@@ -79,6 +79,6 @@ private class FieloFeedCommentHandlerTest {
     
     private static Id getCommunityUserId(){
         
-        return [SELECT network.name, networkId, memberID FROM NetworkMember WHERE Network.Name = 'FieloOrgCisco' LIMIT 1].MemberId;  
+        return [SELECT network.name, networkId, memberID FROM NetworkMember WHERE Network.Name = 'Test Chatter' LIMIT 1].MemberId;  
     }
 }

@@ -7,12 +7,10 @@ public class F_BestCommentBatchTest
         
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
+        //adminUser.userRoleId = testRole.id;
         
-        update adminUser;
+        //update adminUser;
         
-        permissionset ps = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
-        insert new PermissionSetAssignment(AssigneeId = adminUser.id, PermissionSetId = ps.Id);
         
         system.runAs(adminUser){
             
@@ -53,7 +51,7 @@ public class F_BestCommentBatchTest
             // Use a record ID for the subject ID.
             feedItemInput.subjectId = adminUser.Id;
             
-            ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'Chatter Incentive' limit 1][0].NetworkId, feedItemInput);
+            ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'Test Chatter' limit 1][0].NetworkId, feedItemInput);
             
             
             F_BestCommentBatch comment = new F_BestCommentBatch();

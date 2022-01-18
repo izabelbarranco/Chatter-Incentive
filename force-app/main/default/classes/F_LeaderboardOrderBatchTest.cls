@@ -2,9 +2,9 @@
 public class F_LeaderboardOrderBatchTest {
 	@testSetup
     static void setup(){
-        user u = [select id, userroleid from user where profile.name = 'Fielo Essentials Admin' LIMIT 1];
+        user u = [select id, userroleid from user where profile.name = 'System Administrator' LIMIT 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :u.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){
@@ -83,9 +83,9 @@ public class F_LeaderboardOrderBatchTest {
     
     @isTest
     static void test(){
-        user sysAdmin = [select id, userroleid from user where profile.name = 'Fielo Essentials Admin' limit 1];
+        user sysAdmin = [select id, userroleid from user where profile.name = 'System Administrator' limit 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){

@@ -5,7 +5,7 @@ private class F_LeaderboardStartBatchTest {
         
         user sysAdmin = [select id, userroleid from user where profile.name = 'System Administrator' LIMIT 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){
@@ -78,7 +78,7 @@ private class F_LeaderboardStartBatchTest {
             
             List<FieloPLT__Transaction__c> scope = new List<FieloPLT__Transaction__c>();
             
-            Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupId, 'Answer a question', 'Test');
+            Chatter_Event__c event = FieloSObjectFactory.createEvent(member.Id, groupId, 'Receive a like', 'Test');
             insert event;
             FieloPLT__Transaction__c transac =  F_SObjectForTest.getTransaction(member.Id);
             transac.FieloPLT__Member__c = member.id;
@@ -114,7 +114,7 @@ private class F_LeaderboardStartBatchTest {
             transac4.Chatter_Event__c = event4.id;
             scope.add(transac4);
             
-            Chatter_Event__c event5 = FieloSObjectFactory.createEvent(member3.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event5 = FieloSObjectFactory.createEvent(member3.Id, groupId, 'Receive a like', 'Test');
             insert event5;
             FieloPLT__Transaction__c transac5 =  F_SObjectForTest.getTransaction(member3.Id);
             transac5.FieloPLT__Member__c = member3.id;
@@ -122,15 +122,6 @@ private class F_LeaderboardStartBatchTest {
             transac5.FieloPLT__IsProcessed__c = true;
             transac5.Chatter_Event__c = event5.id;
             scope.add(transac5);
-            
-            Chatter_Event__c event6 = FieloSObjectFactory.createEvent(member3.Id, groupId, 'Mention someone', 'Test');
-            insert event6;
-            FieloPLT__Transaction__c transac6 =  F_SObjectForTest.getTransaction(member3.Id);
-            transac6.FieloPLT__Member__c = member3.id;
-            transac6.FieloPLT__Date__c = System.now().addDays(-1);
-            transac6.FieloPLT__IsProcessed__c = true;
-            transac6.Chatter_Event__c = event6.id;
-            scope.add(transac6);
             
             Chatter_Event__c event7 = FieloSObjectFactory.createEvent(member3.Id, groupId, 'Write a post', 'Test');
             insert event7;
@@ -150,15 +141,6 @@ private class F_LeaderboardStartBatchTest {
             transac8.Chatter_Event__c = event8.id;
             scope.add(transac8);
             
-            Chatter_Event__c event9 = FieloSObjectFactory.createEvent(member3.Id, groupId, 'Answer a question', 'Test');
-            insert event9;
-            FieloPLT__Transaction__c transac9 =  F_SObjectForTest.getTransaction(member3.Id);
-            transac9.FieloPLT__Member__c = member3.id;
-            transac9.FieloPLT__Date__c = System.now().addDays(-1);
-            transac9.FieloPLT__IsProcessed__c = true;
-            transac9.Chatter_Event__c = event9.Id;
-            scope.add(transac9);
-            
             Chatter_Event__c event10 = FieloSObjectFactory.createEvent(member3.Id, groupId, 'Your answer is marked as best', 'Test');
             insert event10;
             FieloPLT__Transaction__c transac10 =  F_SObjectForTest.getTransaction(member3.Id);
@@ -168,7 +150,7 @@ private class F_LeaderboardStartBatchTest {
             transac10.Chatter_Event__c = event10.id;
             scope.add(transac10);
             
-            Chatter_Event__c event11 = FieloSObjectFactory.createEvent(member11.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event11 = FieloSObjectFactory.createEvent(member11.Id, groupId, 'Your answer is marked as best', 'Test');
             insert event11;
             FieloPLT__Transaction__c transac11 =  F_SObjectForTest.getTransaction(member11.Id);
             transac11.FieloPLT__Member__c = member11.id;
@@ -177,7 +159,7 @@ private class F_LeaderboardStartBatchTest {
             transac11.Chatter_Event__c = event11.id;
             scope.add(transac11);
             
-            Chatter_Event__c event12 = FieloSObjectFactory.createEvent(member8.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event12 = FieloSObjectFactory.createEvent(member8.Id, groupId, 'Write a post', 'Test');
             insert event12;
             FieloPLT__Transaction__c transac12 =  F_SObjectForTest.getTransaction(member8.Id);
             transac12.FieloPLT__Member__c = member8.id;
@@ -204,7 +186,7 @@ private class F_LeaderboardStartBatchTest {
             transac14.Chatter_Event__c = event14.id;
             scope.add(transac14);
             
-            Chatter_Event__c event15 = FieloSObjectFactory.createEvent(member2.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event15 = FieloSObjectFactory.createEvent(member2.Id, groupId, 'Receive a like', 'Test');
             insert event15;
             FieloPLT__Transaction__c transac15 =  F_SObjectForTest.getTransaction(member2.Id);
             transac15.FieloPLT__Member__c = member2.id;
@@ -213,7 +195,7 @@ private class F_LeaderboardStartBatchTest {
             transac15.Chatter_Event__c = event15.id;
             scope.add(transac15);
             
-            Chatter_Event__c event16 = FieloSObjectFactory.createEvent(member.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event16 = FieloSObjectFactory.createEvent(member.Id, groupId, 'Receive a like', 'Test');
             insert event16;
             FieloPLT__Transaction__c transac16 =  F_SObjectForTest.getTransaction(member.Id);
             transac16.FieloPLT__Member__c = member.id;
@@ -222,7 +204,7 @@ private class F_LeaderboardStartBatchTest {
             transac16.Chatter_Event__c = event16.id;
             scope.add(transac16);
             
-            Chatter_Event__c event17 = FieloSObjectFactory.createEvent(member6.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event17 = FieloSObjectFactory.createEvent(member6.Id, groupId, 'Write a post', 'Test');
             insert event17;
             FieloPLT__Transaction__c transac17 =  F_SObjectForTest.getTransaction(member6.Id);
             transac17.FieloPLT__Member__c = member6.id;
@@ -231,7 +213,7 @@ private class F_LeaderboardStartBatchTest {
             transac17.Chatter_Event__c = event17.id;
             scope.add(transac17);
             
-            Chatter_Event__c event18 = FieloSObjectFactory.createEvent(member7.Id, groupId, 'Mention someone', 'Test');
+            Chatter_Event__c event18 = FieloSObjectFactory.createEvent(member7.Id, groupId, 'Your answer is marked as best', 'Test');
             insert event18;
             FieloPLT__Transaction__c transac18 =  F_SObjectForTest.getTransaction(member7.Id);
             transac18.FieloPLT__Member__c = member7.id;
@@ -239,24 +221,6 @@ private class F_LeaderboardStartBatchTest {
             transac18.FieloPLT__IsProcessed__c = true;
             transac18.Chatter_Event__c = event18.id;
             scope.add(transac18);
-            
-            Chatter_Event__c event19 = FieloSObjectFactory.createEvent(member9.Id, groupId, 'Mention someone', 'Test');
-            insert event19;
-            FieloPLT__Transaction__c transac19 =  F_SObjectForTest.getTransaction(member9.Id);
-            transac19.FieloPLT__Member__c = member9.id;
-            transac19.FieloPLT__Date__c = System.now().addDays(-1);
-            transac19.FieloPLT__IsProcessed__c = true;
-            transac19.Chatter_Event__c = event19.id;
-            scope.add(transac19);
-            
-            Chatter_Event__c event20 = FieloSObjectFactory.createEvent(member10.Id, groupId, 'Mention someone', 'Test');
-            insert event20;
-            FieloPLT__Transaction__c transac20 =  F_SObjectForTest.getTransaction(member10.Id);
-            transac20.FieloPLT__Member__c = member10.id;
-            transac20.FieloPLT__Date__c = System.now().addDays(-1);
-            transac20.FieloPLT__IsProcessed__c = true;
-            transac20.Chatter_Event__c = event20.id;
-            scope.add(transac20);
             
             Chatter_Event__c event21 = FieloSObjectFactory.createEvent(member4.Id, groupId, 'Receive a like', 'Test');
             insert event21;
@@ -276,7 +240,7 @@ private class F_LeaderboardStartBatchTest {
             transac22.Chatter_Event__c = event22.id;
             scope.add(transac22);
             
-            Chatter_Event__c event23 = FieloSObjectFactory.createEvent(member6.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event23 = FieloSObjectFactory.createEvent(member6.Id, groupId, 'Write a post', 'Test');
             insert event23;
             FieloPLT__Transaction__c transac23 =  F_SObjectForTest.getTransaction(member6.Id);
             transac23.FieloPLT__Member__c = member6.id;
@@ -285,7 +249,7 @@ private class F_LeaderboardStartBatchTest {
             transac23.Chatter_Event__c = event23.id;
             scope.add(transac23);
             
-            Chatter_Event__c event24 = FieloSObjectFactory.createEvent(member7.Id, groupId, 'Ask a question', 'Test');
+            Chatter_Event__c event24 = FieloSObjectFactory.createEvent(member7.Id, groupId, 'Write a post', 'Test');
             insert event24;
             FieloPLT__Transaction__c transac24 =  F_SObjectForTest.getTransaction(member7.Id);
             transac24.FieloPLT__Member__c = member7.id;
@@ -294,7 +258,7 @@ private class F_LeaderboardStartBatchTest {
             transac24.Chatter_Event__c = event24.id;
             scope.add(transac24);
             
-            Chatter_Event__c event25 = FieloSObjectFactory.createEvent(member8.Id, groupId, 'Answer a question', 'Test');
+            Chatter_Event__c event25 = FieloSObjectFactory.createEvent(member8.Id, groupId, 'Your answer is marked as best', 'Test');
             insert event25;
             FieloPLT__Transaction__c transac25 =  F_SObjectForTest.getTransaction(member8.Id);
             transac25.FieloPLT__Member__c = member8.id;
@@ -303,7 +267,7 @@ private class F_LeaderboardStartBatchTest {
             transac25.Chatter_Event__c = event25.id;
             scope.add(transac25);
             
-            Chatter_Event__c event26 = FieloSObjectFactory.createEvent(member10.Id, groupId, 'Answer a question', 'Test');
+            Chatter_Event__c event26 = FieloSObjectFactory.createEvent(member10.Id, groupId, 'Write a post', 'Test');
             insert event26;
             FieloPLT__Transaction__c transac26 =  F_SObjectForTest.getTransaction(member10.Id);
             transac26.FieloPLT__Member__c = member10.id;
@@ -365,34 +329,7 @@ private class F_LeaderboardStartBatchTest {
             transac32.FieloPLT__IsProcessed__c = true;
             transac32.Chatter_Event__c = event32.id;
             scope.add(transac32);
-            
-            Chatter_Event__c event33 = FieloSObjectFactory.createEvent(member11.Id, groupId, 'Mention someone', 'Test');
-            insert event33;
-            FieloPLT__Transaction__c transac33 =  F_SObjectForTest.getTransaction(member11.Id);
-            transac33.FieloPLT__Member__c = member11.id;
-            transac33.FieloPLT__Date__c = System.now().addDays(-1);
-            transac33.FieloPLT__IsProcessed__c = true;
-            transac33.Chatter_Event__c = event33.id;
-            scope.add(transac33);
-            
-            Chatter_Event__c event34 = FieloSObjectFactory.createEvent(member11.Id, groupId, 'Answer a question', 'Test');
-            insert event34;
-            FieloPLT__Transaction__c transac34 =  F_SObjectForTest.getTransaction(member11.Id);
-            transac34.FieloPLT__Member__c = member11.id;
-            transac34.FieloPLT__Date__c = System.now().addDays(-1);
-            transac34.FieloPLT__IsProcessed__c = true;
-            transac34.Chatter_Event__c = event34.id;
-            scope.add(transac34);
-            
-            Chatter_Event__c event35 = FieloSObjectFactory.createEvent(member11.Id, groupId, 'Your answer is marked as best', 'Test');
-            insert event35;
-            FieloPLT__Transaction__c transac35 =  F_SObjectForTest.getTransaction(member11.Id);
-            transac35.FieloPLT__Member__c = member11.id;
-            transac35.FieloPLT__Date__c = System.now().addDays(-1);
-            transac35.FieloPLT__IsProcessed__c = true;
-            transac35.Chatter_Event__c = event35.id;
-            scope.add(transac35);
-                        
+                    
             insert scope;
             
             System.debug('scope setup: '+scope);
@@ -439,7 +376,7 @@ private class F_LeaderboardStartBatchTest {
     static void test(){
         user sysAdmin = [select id, userroleid from user where profile.name = 'System Administrator' limit 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){

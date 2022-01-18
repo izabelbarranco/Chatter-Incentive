@@ -76,7 +76,7 @@ global class F_FollowBatch implements Database.Batchable<sObject>, Schedulable{
                 lMemberMap.put(fMember.FieloPLT__User__c + '' + fMember.Group_ID__c, fMember);
             }
         }
-        
+        /*
         Map<String,Chatter_Event__c> lEventMap = new Map<String,Chatter_Event__c>();
         for(Chatter_Event__c event : [SELECT Id, Member__c, type__c, Feed_Item_Id__c FROM Chatter_Event__c
                                         WHERE Feed_Item_Id__c != '' AND (type__c = 'Follow a topic' 
@@ -101,7 +101,7 @@ global class F_FollowBatch implements Database.Batchable<sObject>, Schedulable{
                     eventsList.add(ev1);
                 }
                 FieloPLT__Member__c memberBeingFollowed = lMemberMap.get(parentId + '' + userPrimaryComMap.get(parentId)?.Id);
-                /*
+                
                 if(!lEventMap.containsKey('Get followed by another person' + '' + memberBeingFollowed.Id + '' + follow.SubscriberId)){
                     FieloPLT__Event__c ev2 = new FieloPLT__Event__c();
                     ev2.FieloPLT__Member__c = memberBeingFollowed.Id;
@@ -109,7 +109,7 @@ global class F_FollowBatch implements Database.Batchable<sObject>, Schedulable{
                     ev2.FieloPLT__EventDate__c	= System.today();
                     ev2.Feed_Item_Id__c	= follow.SubscriberId;
                     eventsList.add(ev2);
-                }*/
+                }
                 
             }
             else if(parentId.startsWith('0TO')){
@@ -130,7 +130,7 @@ global class F_FollowBatch implements Database.Batchable<sObject>, Schedulable{
         if(eventsList.size() > 0){
             insert eventsList;
         }
-        
+        */
         
     }
     

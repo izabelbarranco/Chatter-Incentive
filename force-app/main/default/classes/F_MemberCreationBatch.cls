@@ -14,7 +14,7 @@ global class F_MemberCreationBatch implements Database.Batchable<sObject>{
         
         for(CollaborationGroupMember collab : collbMemberList){
             for(FieloPLT__Program__c  program : programs){
-                if(collab.CollaborationGroup.network.name=='FieloOrgCisco' &&  program.name=='Fielo Program'){
+                if(program.name=='Chatter Incentive'){
                     FieloPLT__Member__c member = new FieloPLT__Member__c();
                     member.FieloPLT__Email__c = collab.Member.Email;
                     member.FieloPLT__Program__c = program.Id;

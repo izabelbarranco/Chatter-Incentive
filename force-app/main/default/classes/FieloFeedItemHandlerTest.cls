@@ -4,7 +4,7 @@ private class FieloFeedItemHandlerTest {
     @isTest(seeAllData=true)
     static void testOnAfterInsert(){
         FieloPLT.CacheAPI.enableCacheAccess(false);
-        List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='FieloOrgCisco'];
+        List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='Test Chatter'];
 		Id networkId = testnetworkList[0].Id;
         
         Profile prof = F_SObjectForTest.getProfile('system administrator');
@@ -48,7 +48,7 @@ private class FieloFeedItemHandlerTest {
             // Use a record ID for the subject ID.
             feedItemInput.subjectId = u.Id;
             
-            ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'FieloOrgCisco' limit 1][0].NetworkId, feedItemInput);
+            ConnectApi.FeedElement feedElement = ConnectApi.ChatterFeeds.postFeedElement([SELECT NetworkId FROM NetworkMember WHERE Network.Name = 'Test Chatter' limit 1][0].NetworkId, feedItemInput);
         
         }
      

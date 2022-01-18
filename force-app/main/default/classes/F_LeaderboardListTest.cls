@@ -4,9 +4,9 @@ private class F_LeaderboardListTest {
     @testSetup
     static void setup(){
         
-        user u = [select id, userroleid from user where profile.name = 'Fielo Essentials Admin' LIMIT 1];
+        user u = [select id, userroleid from user where profile.name = 'System Administrator' LIMIT 1];
         
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :u.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){
@@ -225,11 +225,11 @@ private class F_LeaderboardListTest {
     }
     @isTest
     private static void testGetLeaderboard(){
-        user user1 = [select id, userroleid from user where profile.name = 'Fielo Essentials Admin' limit 1];
+        user user1 = [select id, userroleid from user where profile.name = 'System Administrator' limit 1];
         user user2 = [select id, userroleid from user where username = 'testc2@fielo.com' limit 1];
         user user3 = [select id, userroleid from user where username = 'testc1@fielo.com' limit 1];
         user user4 = [select id, userroleid from user where username = 'testc@fielo.com' limit 1];
-        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
+        permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :user1.Id 
                                              AND PermissionSetId = :ps3.Id];
         if(psa.size() == 0){

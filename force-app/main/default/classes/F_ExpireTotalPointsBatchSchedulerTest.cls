@@ -5,13 +5,11 @@ public class F_ExpireTotalPointsBatchSchedulerTest {
     static void test(){
         userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         User adminUser = [Select Id, UserRoleId From User Where Profile.Name='System Administrator' Limit 1];
-        adminUser.userRoleId = testRole.id;
+        //adminUser.userRoleId = testRole.id;
 
-        update adminUser;
+        //update adminUser;
 
-        permissionset ps = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdmin'];
-        insert new PermissionSetAssignment(AssigneeId = adminUser.id, PermissionSetId = ps.Id);
-
+       
         system.runAs(adminUser){
             
             Account portalAccount = new Account();

@@ -3,7 +3,7 @@ public with sharing class FieloFeedItemService {
     private static final String RYPPLE_TYPE = 'RypplePost';
     private Id actualNetworkId;
     public FieloFeedItemService(){
-        if(Network.getNetworkId() == null) actualNetworkId = [SELECT Id FROM Network WHERE Name ='Chatter Incentive' limit 1].Id;
+        if(Network.getNetworkId() == null) actualNetworkId = [SELECT Id FROM Network WHERE Name ='Test Chatter' limit 1].Id;
         else actualNetworkId = Network.getNetworkId();
         System.debug('actualNetworkId: '+ actualNetworkId);
     }

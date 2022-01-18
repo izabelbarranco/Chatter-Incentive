@@ -2,14 +2,14 @@
 private class F_MemberCreationBatchTest {
 	@testSetup
     static void setup(){
-        List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='FieloOrgCisco'];
+        List <Network> testnetworkList = [SELECT Id, Name FROM Network WHERE Name='Test Chatter'];
 		Id networkId = testnetworkList[0].Id;
 
 		User testUser = FieloSObjectFactory.createStandardUserNoContact();
 		insert testUser;
        
         
-        FieloPLT__Program__c program = F_SObjectForTest.getProgram('Fielo Program');
+        FieloPLT__Program__c program = F_SObjectForTest.getProgram('Chatter Incentive');
         insert program;
         
 		List <CollaborationGroup> testGroups = new List <CollaborationGroup>();
