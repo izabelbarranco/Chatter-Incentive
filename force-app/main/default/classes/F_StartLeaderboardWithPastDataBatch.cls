@@ -1,4 +1,4 @@
-global class F_LeaderboardStartBatch implements Database.Batchable<sObject>{
+global class F_StartLeaderboardWithPastDataBatch implements Database.Batchable<sObject>{
     
     global Database.QueryLocator start(Database.BatchableContext BC){
         return Database.getQueryLocator( [SELECT Id, FieloPLT__Member__c, FieloPLT__Member__r.FieloPLT__User__c, Chatter_Event__c,

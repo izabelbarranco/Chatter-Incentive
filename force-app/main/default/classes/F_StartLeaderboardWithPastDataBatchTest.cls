@@ -1,5 +1,5 @@
 @isTest
-private class F_LeaderboardStartBatchTest {
+private class F_StartLeaderboardWithPastDataBatchTest {
     @testSetup
     static void setup(){
         
@@ -368,6 +368,12 @@ private class F_LeaderboardStartBatchTest {
             oxl2.Position__c = 1;
             oxl2.F_Type__c = 'Community';
             insert oxl2;
+
+            F_StartLeaderboardWithPastDataBatch cb = New F_StartLeaderboardWithPastDataBatch();
+
+            Database.QueryLocator ql = cb.start(null);
+            cb.execute(null,scope);
+            cb.Finish(null);
             
         }
     }
@@ -385,7 +391,7 @@ private class F_LeaderboardStartBatchTest {
         
         system.runAs(sysAdmin){
             Test.startTest();
-            F_LeaderboardStartBatch lsb = new F_LeaderboardStartBatch();
+            F_StartLeaderboardWithPastDataBatch lsb = new F_StartLeaderboardWithPastDataBatch();
             Database.executeBatch(lsb);
             Test.stopTest();
         }

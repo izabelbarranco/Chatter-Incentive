@@ -3048,11 +3048,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>FieloPLT__Mission__c.FieloPLT__Excludes__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>FieloPLT__Mission__c.FieloPLT__ExternalId__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4379,11 +4374,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>FieloPLT__Rule__c.FieloPLT__Description__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>FieloPLT__Rule__c.FieloPLT__Excludes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

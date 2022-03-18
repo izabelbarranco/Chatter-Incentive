@@ -45,15 +45,15 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>F_LeaderboardStartBatch</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>F_LeaderboardStartBatchTest</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>F_LeaderboardWrapper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>F_StartLeaderboardWithPastDataBatch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>F_StartLeaderboardWithPastDataBatchTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <fieldPermissions>

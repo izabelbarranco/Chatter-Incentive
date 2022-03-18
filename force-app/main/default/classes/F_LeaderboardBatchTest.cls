@@ -2,7 +2,10 @@
 private class F_LeaderboardBatchTest {
     @testSetup
     static void setup(){
+        userRole testRole = [select id from userrole where name = 'CEO' limit 1];
         user sysAdmin = [select id, userroleid from user where profile.name = 'System Administrator' limit 1];
+        sysAdmin.userroleid = testRole.Id;
+        update sysAdmin;
         
         permissionset ps3 = [SELECT Id FROM PermissionSet WHERE Name = 'FieloPLTAdminClone'];
         List<PermissionSetAssignment> psa = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :sysAdmin.Id 
@@ -344,6 +347,7 @@ private class F_LeaderboardBatchTest {
             transac30.FieloPLT__Date__c = System.now().addDays(-1);
             transac30.FieloPLT__IsProcessed__c = true;
             transac30.Chatter_Event__c = event30.id;
+            transac30.FieloPLT__Points__c = 4;
             scope.add(transac30);
             /*
             Chatter_Event__c event31 = FieloSObjectFactory.createEvent(member10.Id, groupId, 'Follow a topic', 'Test');
@@ -371,6 +375,7 @@ private class F_LeaderboardBatchTest {
             transac33.FieloPLT__Date__c = System.now().addDays(-1);
             transac33.FieloPLT__IsProcessed__c = true;
             transac33.Chatter_Event__c = event33.id;
+            transac33.FieloPLT__Points__c = 4;
             scope.add(transac33);
             
             Chatter_Event__c event34 = FieloSObjectFactory.createEvent(member11.Id, groupId, 'Write a post', 'Test');
@@ -380,10 +385,15 @@ private class F_LeaderboardBatchTest {
             transac34.FieloPLT__Date__c = System.now().addDays(-1);
             transac34.FieloPLT__IsProcessed__c = true;
             transac34.Chatter_Event__c = event34.id;
+            transac34.FieloPLT__Points__c = 4;
             scope.add(transac34);
             
             insert scope;
             
+            List<FieloPLT__Transaction__c> aaa = [SELECT Id, FieloPLT__Member__c, FieloPLT__Member__r.FieloPLT__User__c, Chatter_Event__c,
+                                          Chatter_Event__r.type__c, FieloPLT__Member__r.Group_ID__c, FieloPLT__Points__c 
+                                          FROM FieloPLT__Transaction__c WHERE FieloPLT__Date__c = YESTERDAY AND FieloPLT__IsProcessed__c = true];
+            system.debug('aaaaa'+ transac34);
             System.debug('scope setup: '+scope);
             FieloPLT__Promotion__c promotion = F_SObjectForTest.getPromotion(program.Id);
             insert promotion;
@@ -401,9 +411,9 @@ private class F_LeaderboardBatchTest {
 			
             F_Leaderboard__c oxl3 = new F_Leaderboard__c();
             oxl3.F_User__c = member3.FieloPLT__User__c;
-            oxl3.F_ChatterGroupId__c = 'test3';
+            oxl3.F_ChatterGroupId__c = groupId;
             oxl3.EndDate__c = Date.today().addDays(1);
-            oxl3.StartDate__c = Date.newInstance(2021, 08, 01);
+            oxl3.StartDate__c = Date.newInstance(2022, 01, 01);
             oxl3.Member__c = member3.Id;
             oxl3.Type__c = 'Quarter';
             oxl3.Points__c = 100;
@@ -434,6 +444,12 @@ private class F_LeaderboardBatchTest {
             system.debug('oxl3: '+oxl3);
             
             insert oxlList;
+            
+            F_LeaderboardBatch cb = New F_LeaderboardBatch();
+
+            Database.QueryLocator ql = cb.start(null);
+            cb.execute(null,scope);
+            cb.Finish(null);
         }
         
     }

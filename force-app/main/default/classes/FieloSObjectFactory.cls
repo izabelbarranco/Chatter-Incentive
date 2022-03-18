@@ -76,7 +76,7 @@ global with sharing class FieloSObjectFactory {
 	{
 		List<Profile> standardProfileList = [SELECT Id FROM Profile WHERE Name = :Peak_Onboarding_TestConstants.COMMUNITY_PROFILE];
 		User testUser;
-		if (!Peak_Onboarding_Utils.isNullOrEmpty(standardProfileList))
+		if (!(standardProfileList == null || standardProfileList.size() == 0))
 		{
 			Profile standardProfile = standardProfileList[0];
 			testUser = new User(Alias = Peak_Onboarding_TestConstants.STANDARD_ALIAS, Email = Peak_Onboarding_TestConstants.STANDARD_EMAIL, EmailEncodingKey = Peak_Onboarding_TestConstants.ENCODING, FirstName = Peak_Onboarding_TestConstants.FIRSTNAME, LastName = Peak_Onboarding_TestConstants.LASTNAME, LanguageLocaleKey = Peak_Onboarding_TestConstants.LOCALE, LocaleSidKey = Peak_Onboarding_TestConstants.LOCALE, ProfileId = standardProfile.Id, TimeZoneSidKey = Peak_Onboarding_TestConstants.TIMEZONE, Username = Peak_Onboarding_TestConstants.STANDARD_USERNAME);
